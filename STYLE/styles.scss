@@ -1,0 +1,145 @@
+@mixin flex($align,$justify,$direction){
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: $direction;
+}
+
+$text:2.5rem;
+$header:5rem;
+$mobileheader:4rem;
+$background:#1F1F1F;
+
+@import "global";
+@import "intro";
+
+@media screen and (max-width:1024px) {
+    html{
+        font-size:70%;
+    }
+    
+    .mobile-header{
+        width:100%;
+        background:$background;
+        @include flex(center,space-between,row);
+    
+        .mobile-logo{
+            h1{
+                font-size:$mobileheader;
+                color: white;
+                font-weight: lighter;
+                padding: 2.3rem;
+            }
+        }
+
+        .mobile-logo h1:after{
+            content:'GO';
+            text-decoration: underline;
+        }
+
+        .bars{
+            display: block;
+            color: white;
+            font-size: $text;
+            margin:2rem;
+            cursor: pointer;
+        }
+    }
+
+    /* MENU */
+    .burger{
+        position: fixed;
+        @include flex(flex-end,flex-start,column);
+        background:rgba(0,0,0,0.6);
+        height:100%;
+        width: 100%;
+        top:0;
+        left:100%;
+        transition: transform 0.2s ease-in;
+
+            .times{
+                width:100%;
+                @include flex(center,flex-end,row);
+                
+                
+                .x{
+                    font-size: $text;
+                    cursor: pointer;
+                    margin:2rem;
+                }
+            }
+
+            .menu-logo{
+                width: 100%;
+                @include flex(center,space-between,row);
+                h1{
+                    font-size: 3rem;
+                    color:black;
+                    font-weight: lighter;
+                }
+            }
+
+            .mobile-links{
+                @include flex(center,center,column);
+                li{
+                    margin:1rem;
+                    a{
+                        color:black;
+                    }
+                }
+            }
+
+            .mobile-social{
+                @include flex(center,center,row);
+                margin-top: 2rem;
+                li{
+                    margin:1rem;
+                    a{
+                        color: black;
+                    }
+                }
+            }
+        }
+
+        .menu-logo h1:after{
+            content:'GO';
+            text-decoration: underline;
+        }
+
+        .menu{
+            width: 40%;
+            min-height: 100vh;
+            background:white;
+        }
+
+        .menu-open{
+            transform: translate(-100%);
+        }
+
+    /* MAIN HTML */
+    nav{
+        display: none;
+    }
+
+    .grid{
+        grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+        background: black;
+        grid-gap:1rem;
+        width:100%;
+        margin: auto;
+        padding:0;
+        .box{
+            grid-column: auto;
+            grid-row: auto;
+            padding:20rem 10rem;
+        }
+    }
+}
+
+@media screen and (max-width:501px){
+    html{
+        font-size: 45%;
+    }
+
+
+}
